@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'inscription{% endblock %}
+
+{% block body %}
+<h1>Inscription #{{ inscription.id }}</h1>
+
+<ul>
+    <li><strong>Stagiaire :</strong> {{ inscription.stagiaire.nom }} {{ inscription.stagiaire.prenom }}</li>
+    <li><strong>Session :</strong> {{ inscription.session.nom }}</li>
+    <li><strong>Date d'inscription :</strong> {{ inscription.dateInscription ? inscription.dateInscription|date('d/m/Y') : 'Non renseignée' }}</li>
+    {# Ajoute d'autres propriétés si besoin #}
+</ul>
+
+<a href="{{ path('inscription_index') }}">← Retour à la liste</a> |
+<a href="{{ path('inscription_edit', {'id': inscription.id}) }}">Modifier</a>
+
+<form method="post" action="{{ path('inscription_delete', {'id': inscription.id}) }}" onsubmit="return confirm('Confirmer la suppression ?');" style="display:inline-block;">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ inscription.id) }}">
+    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+</form>
+
+{% endblock %}

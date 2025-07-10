@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit TestPrerequis{% endblock %}
+
+{% block body %}
+    <h1>Edit TestPrerequis</h1>
+
+    {{ include('test_prerequis/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_test_prerequis_index') }}">back to list</a>
+
+    {{ include('test_prerequis/_delete_form.html.twig') }}
+{% endblock %}

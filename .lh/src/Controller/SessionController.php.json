@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/SessionController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752138018833,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752138018833,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse App\\Entity\\Session;\nuse App\\Form\\SessionType;\nuse App\\Repository\\SessionRepository;\nuse Doctrine\\ORM\\EntityManagerInterface;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Request;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\n#[Route('/session')]\nclass SessionController extends AbstractController\n{\n    #[Route('/', name: 'session_index', methods: ['GET'])]\n    public function index(SessionRepository $repo): Response\n    {\n        $sessions = $repo->findAll();\n        return $this->render('session/index.html.twig', [\n            'sessions' => $sessions,\n        ]);\n    }\n\n    #[Route('/new', name: 'session_new', methods: ['GET', 'POST'])]\n    public function new(Request $request, EntityManagerInterface $em): Response\n    {\n        $session = new Session();\n        $form = $this->createForm(SessionType::class, $session);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->persist($session);\n            $em->flush();\n\n            return $this->redirectToRoute('session_index');\n        }\n\n        return $this->render('session/new.html.twig', [\n            'form' => $form->createView(),\n        ]);\n    }\n\n    #[Route('/{id}', name: 'session_show', methods: ['GET'])]\n    public function show(Session $session): Response\n    {\n        return $this->render('session/show.html.twig', [\n            'session' => $session,\n        ]);\n    }\n\n    #[Route('/{id}/edit', name: 'session_edit', methods: ['GET', 'POST'])]\n    public function edit(Request $request, Session $session, EntityManagerInterface $em): Response\n    {\n        $form = $this->createForm(SessionType::class, $session);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->flush();\n\n            return $this->redirectToRoute('session_index');\n        }\n\n        return $this->render('session/edit.html.twig', [\n            'form' => $form->createView(),\n            'session' => $session,\n        ]);\n    }\n\n    #[Route('/{id}', name: 'session_delete', methods: ['POST'])]\n    public function delete(Request $request, Session $session, EntityManagerInterface $em): Response\n    {\n        if ($this->isCsrfTokenValid('delete'.$session->getId(), $request->request->get('_token'))) {\n            $em->remove($session);\n            $em->flush();\n        }\n\n        return $this->redirectToRoute('session_index');\n    }\n}\n"
+        }
+    ]
+}

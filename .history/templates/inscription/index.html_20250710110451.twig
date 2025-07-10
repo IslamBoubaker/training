@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des inscriptions{% endblock %}
+
+{% block body %}
+<h1>Liste des inscriptions</h1>
+
+<a href="{{ path('inscription_new') }}">Créer une nouvelle inscription</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Stagiaire</th>
+            <th>Session</th>
+            <th>Date d'inscription</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for insc

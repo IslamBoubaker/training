@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des responsables{% endblock %}
+
+{% block body %}
+<h1>Responsables</h1>
+
+<a href="{{ path('responsable_new') }}">Ajouter un responsable</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for responsable in responsables %}
+        <tr>
+            <td>{{ responsable.id }}</td>
+            <td>{{ responsable.nom }}</td>
+            <td>{{ responsable.email }}</td>
+            <td>
+                <a href="{{ path('responsable_show', {'id': responsable.id}) }}">Voir</a>
+                <a href="{{ path('responsable_edit', {'id': responsable.id}) }}">Modifier</a>
+                <form method="post" action="{{ path('responsable_delete', {'id': responsable.id}) }}" style="display:inline-block" onsubmit="return confirm('Confirmer la suppression ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ responsable.id) }}">
+                    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {% else %}
+        <tr><td colspan="4">Aucun responsable trouvé.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

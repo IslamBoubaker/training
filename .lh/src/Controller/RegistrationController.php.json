@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/RegistrationController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752138435359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752138435359,
+            "name": "Commit-0",
+            "content": "<?php\r\n// src/Controller/RegistrationController.php\r\nnamespace App\\Controller;\r\n\r\nuse App\\Entity\\User;\r\nuse App\\Form\\RegistrationFormType;\r\nuse Doctrine\\ORM\\EntityManagerInterface;\r\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\r\nuse Symfony\\Component\\HttpFoundation\\Request;\r\nuse Symfony\\Component\\HttpFoundation\\Response;\r\nuse Symfony\\Component\\PasswordHasher\\Hasher\\UserPasswordHasherInterface;\r\nuse Symfony\\Component\\Routing\\Annotation\\Route;\r\n\r\nclass RegistrationController extends AbstractController\r\n{\r\n    #[Route('/register', name: 'app_register')]\r\n    public function register(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em): Response\r\n    {\r\n        $user = new User();\r\n        $form = $this->createForm(RegistrationFormType::class, $user);\r\n        $form->handleRequest($request);\r\n\r\n        if ($form->isSubmitted() && $form->isValid()) {\r\n            // Hash du mot de passe\r\n            $user->setPassword(\r\n                $passwordHasher->hashPassword(\r\n                    $user,\r\n                    $form->get('plainPassword')->getData()\r\n                )\r\n            );\r\n\r\n            $em->persist($user);\r\n            $em->flush();\r\n\r\n            // Connecter automatiquement ou rediriger\r\n            return $this->redirectToRoute('app_login');\r\n        }\r\n\r\n        return $this->render('security/register.html.twig', [\r\n            'registrationForm' => $form->createView(),\r\n        ]);\r\n    }\r\n}\r\n"
+        }
+    ]
+}

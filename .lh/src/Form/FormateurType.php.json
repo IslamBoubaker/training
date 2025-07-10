@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/Form/FormateurType.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137923672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752138210168,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n namespace App\\Form;\n \n use App\\Entity\\Formateur;\n use Symfony\\Component\\Form\\AbstractType;\n-use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n \n@@ -15,10 +15,10 @@\n     {\n         $builder\n             ->add('nom', TextType::class)\n             ->add('prenom', TextType::class)\n-            ->add('cv', TextareaType::class, ['required' => false])\n-            ->add('notes', TextareaType::class, ['required' => false])\n+            ->add('email', EmailType::class)\n+            // Ajouter des champs spécifiques : CV, notes, etc.\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver)\n"
+                }
+            ],
+            "date": 1752137923672,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\Formateur;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass FormateurType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options)\n    {\n        $builder\n            ->add('nom', TextType::class)\n            ->add('prenom', TextType::class)\n            ->add('cv', TextareaType::class, ['required' => false])\n            ->add('notes', TextareaType::class, ['required' => false])\n        ;\n    }\n\n    public function configureOptions(OptionsResolver $resolver)\n    {\n        $resolver->setDefaults([\n            'data_class' => Formateur::class,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

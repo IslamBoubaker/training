@@ -1,0 +1,84 @@
+# config/packages/security.yaml
+security:
+    password_hashers:
+        # Pour l'entité Responsable
+        App\Entity\Responsable:
+            algorithm: auto
+        # Par défaut pour toute classe implémentant PasswordAuthenticatedUserInterface
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+        # Tu peux ajouter d'autres providers si nécessaire
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            lazy: true
+            provider: app_user_provider
+
+            # Formulaire de connexion classique
+            form_login:
+                login_path: login    # route pour afficher le formulaire de login
+                check_path: login    # route que Symfony intercepte pour traiter la soumission
+                # options utiles (à adapter)
+                # csrf_token_generator: security.csrf.token_manager
+                # default_target_path: /
+
+            # Authenticator personnalisé (généré avec make:auth)
+            custom_authenticator: App\Security\AppAuthenticator
+
+            # --- AJOUTEZ CETTE LIGNE ---
+            entry_point: App\Security\AppAuthenticator # Indique à Symfony quel authentificateur gère le point d'entrée
+            # --------------------------
+
+            logout:
+                path: logout
+                # où rediriger après déconnexion
+                target: /
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800   # 7 jours
+                path: /
+                always_remember_me: true
+
+    access_control:
+        # Autoriser l'accès PUBLIC sur ces routes (pas d'authentification du tout)
+        - { path: ^/login$, roles: PUBLIC_ACCESS }
+        - { path: ^/register$, roles: PUBLIC_ACCESS }
+        - { path: ^/contact$, roles: PUBLIC_ACCESS } # Ajouté, car c'est une route publique
+        - { path: ^/public, roles: PUBLIC_ACCESS } # Si ce chemin est vraiment public
+
+        # Contrôle d'accès par rôle pour différentes sections
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/logistique, roles: ROLE_RESPONSABLE_LOGISTIQUE }
+        - { path: ^/formation-inter, roles: ROLE_RESPONSABLE_FORMATION_INTER }
+        - { path: ^/catalogue, roles: ROLE_RESPONSABLE_CATALOGUE }
+        - { path: ^/client, roles: ROLE_CLIENT }
+
+        # Accès par défaut (tout le reste)
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_RESPONSABLE_CATALOGUE, ROLE_RESPONSABLE_LOGISTIQUE, ROLE_RESPONSABLE_FORMATION_INTER, ROLE_CLIENT, ROLE_VISITEUR]
+        ROLE_RESPONSABLE_CATALOGUE: [ROLE_CLIENT, ROLE_VISITEUR]
+        ROLE_RESPONSABLE_LOGISTIQUE: [ROLE_CLIENT, ROLE_VISITEUR]
+        ROLE_RESPONSABLE_FORMATION_INTER: [ROLE_CLIENT, ROLE_VISITEUR]
+        ROLE_CLIENT: [ROLE_VISITEUR]
+
+# Configuration spécifique à l’environnement de test
+when@test:
+    security:
+        password_hashers:
+            Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+                algorithm: auto
+                cost: 4
+                time_cost: 3
+                memory_cost: 10

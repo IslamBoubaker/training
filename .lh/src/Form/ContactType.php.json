@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Form/ContactType.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752135547803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752135547803,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Form;\n\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass ContactType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options)\n    {\n        $builder\n            ->add('nom', TextType::class, [\n                'label' => 'Votre nom',\n            ])\n            ->add('email', EmailType::class, [\n                'label' => 'Votre email',\n            ])\n            ->add('message', TextareaType::class, [\n                'label' => 'Votre message',\n            ]);\n    }\n\n    public function configureOptions(OptionsResolver $resolver)\n    {\n        $resolver->setDefaults([\n            // Pas d'entité liée, juste un formulaire simple\n            'csrf_protection' => true,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

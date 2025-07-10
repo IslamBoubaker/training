@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des stagiaires{% endblock %}
+
+{% block body %}
+<h1>Stagiaires</h1>
+
+<a href="{{ path('stagiaire_new') }}">Ajouter un stagiaire</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for stagiaire in stagiaires %}
+        <tr>
+            <td>{{ stagiaire.id }}</td>
+            <td>{{ stagiaire.nom }}</td>
+            <td>{{ stagiaire.prenom }}</td>
+            <td>{{ stagiaire.email }}</td>
+            <td>
+                <a href="{{ path('stagiaire_show', {'id': stagiaire.id}) }}">Voir</a>
+                <a href="{{ path('stagiaire_edit', {'id': stagiaire.id}) }}">Modifier</a>
+                <form method="post" action="{{ path('stagiaire_delete', {'id': stagiaire.id}) }}" style="display:inline-block" onsubmit="return confirm('Confirmer la suppression ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ stagiaire.id) }}">
+                    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {% else %}
+        <tr><td colspan="5">Aucun stagiaire trouvé.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/Form/TestPrerequisType.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137873490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752138081111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,12 +2,9 @@\n \n namespace App\\Form;\n \n use App\\Entity\\TestPrerequis;\n-use App\\Entity\\Formation;\n-use Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType;\n use Symfony\\Component\\Form\\AbstractType;\n-use Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n@@ -17,15 +14,10 @@\n     public function buildForm(FormBuilderInterface $builder, array $options)\n     {\n         $builder\n             ->add('titre', TextType::class)\n-            ->add('description', TextareaType::class, ['required' => false])\n-            ->add('nbQuestions', IntegerType::class)\n-            ->add('formation', EntityType::class, [\n-                'class' => Formation::class,\n-                'choice_label' => 'nom',\n-                'placeholder' => 'Choisir une formation',\n-            ])\n+            ->add('description', TextareaType::class)\n+            // Ajouter d'autres champs si besoin, comme questions etc.\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver)\n"
+                }
+            ],
+            "date": 1752137873490,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\TestPrerequis;\nuse App\\Entity\\Formation;\nuse Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass TestPrerequisType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options)\n    {\n        $builder\n            ->add('titre', TextType::class)\n            ->add('description', TextareaType::class, ['required' => false])\n            ->add('nbQuestions', IntegerType::class)\n            ->add('formation', EntityType::class, [\n                'class' => Formation::class,\n                'choice_label' => 'nom',\n                'placeholder' => 'Choisir une formation',\n            ])\n        ;\n    }\n\n    public function configureOptions(OptionsResolver $resolver)\n    {\n        $resolver->setDefaults([\n            'data_class' => TestPrerequis::class,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

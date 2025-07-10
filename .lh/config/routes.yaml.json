@@ -1,0 +1,18 @@
+{
+    "sourceFile": "config/routes.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752135636773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752135636773,
+            "name": "Commit-0",
+            "content": "controllers:\n    resource:\n        path: ../src/Controller/\n        namespace: App\\Controller\n    type: attribute\n\nformation_index:\n    path: /formations\n    controller: App\\Controller\\FormationController::index\n\nformation_show:\n    path: /formations/{id}\n    controller: App\\Controller\\FormationController::show\n\ntest_prerequis:\n    path: /formations/{formation_id}/test\n    controller: App\\Controller\\TestPrerequisController::test\n\ninscription_new:\n    path: /inscription/{session_id}\n    controller: App\\Controller\\InscriptionController::new\n\ncontact:\n    path: /contact\n    controller: App\\Controller\\ContactController::contact\n"
+        }
+    ]
+}

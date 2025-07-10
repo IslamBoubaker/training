@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/FormateurController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137916408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137916408,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse App\\Entity\\Formateur;\nuse App\\Form\\FormateurType;\nuse App\\Repository\\FormateurRepository;\nuse Doctrine\\ORM\\EntityManagerInterface;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Request;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\n#[Route('/formateur')]\nclass FormateurController extends AbstractController\n{\n    #[Route('/', name: 'formateur_index', methods: ['GET'])]\n    public function index(FormateurRepository $repo): Response\n    {\n        $formateurs = $repo->findAll();\n        return $this->render('formateur/index.html.twig', [\n            'formateurs' => $formateurs,\n        ]);\n    }\n\n    #[Route('/new', name: 'formateur_new', methods: ['GET', 'POST'])]\n    public function new(Request $request, EntityManagerInterface $em): Response\n    {\n        $formateur = new Formateur();\n        $form = $this->createForm(FormateurType::class, $formateur);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->persist($formateur);\n            $em->flush();\n\n            return $this->redirectToRoute('formateur_index');\n        }\n\n        return $this->render('formateur/new.html.twig', [\n            'form' => $form->createView(),\n        ]);\n    }\n\n    #[Route('/{id}', name: 'formateur_show', methods: ['GET'])]\n    public function show(Formateur $formateur): Response\n    {\n        return $this->render('formateur/show.html.twig', [\n            'formateur' => $formateur,\n        ]);\n    }\n\n    #[Route('/{id}/edit', name: 'formateur_edit', methods: ['GET', 'POST'])]\n    public function edit(Request $request, Formateur $formateur, EntityManagerInterface $em): Response\n    {\n        $form = $this->createForm(FormateurType::class, $formateur);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->flush();\n\n            return $this->redirectToRoute('formateur_index');\n        }\n\n        return $this->render('formateur/edit.html.twig', [\n            'form' => $form->createView(),\n            'formateur' => $formateur,\n        ]);\n    }\n\n    #[Route('/{id}', name: 'formateur_delete', methods: ['POST'])]\n    public function delete(Request $request, Formateur $formateur, EntityManagerInterface $em): Response\n    {\n        if ($this->isCsrfTokenValid('delete'.$formateur->getId(), $request->request->get('_token'))) {\n            $em->remove($formateur);\n            $em->flush();\n        }\n\n        return $this->redirectToRoute('formateur_index');\n    }\n}\n"
+        }
+    ]
+}

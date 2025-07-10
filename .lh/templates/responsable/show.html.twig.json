@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/responsable/show.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137628992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752137987256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,17 @@\n <h1>Responsable #{{ responsable.id }}</h1>\n \n <ul>\n     <li><strong>Nom :</strong> {{ responsable.nom }}</li>\n+    <li><strong>Prénom :</strong> {{ responsable.prenom }}</li>\n     <li><strong>Email :</strong> {{ responsable.email }}</li>\n-    {# Ajoute d'autres propriétés si besoin #}\n </ul>\n \n-<a href=\"{{ pa\n+<a href=\"{{ path('responsable_index') }}\">← Retour à la liste</a> |\n+<a href=\"{{ path('responsable_edit', {'id': responsable.id}) }}\">Modifier</a>\n+\n+<form method=\"post\" action=\"{{ path('responsable_delete', {'id': responsable.id}) }}\" onsubmit=\"return confirm('Confirmer la suppression ?');\" style=\"display:inline-block;\">\n+    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ responsable.id) }}\">\n+    <button type=\"submit\" style=\"background:none;border:none;color:red;cursor:pointer;\">Supprimer</button>\n+</form>\n+\n+{% endblock %}\n"
+                }
+            ],
+            "date": 1752137628992,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Détails du responsable{% endblock %}\n\n{% block body %}\n<h1>Responsable #{{ responsable.id }}</h1>\n\n<ul>\n    <li><strong>Nom :</strong> {{ responsable.nom }}</li>\n    <li><strong>Email :</strong> {{ responsable.email }}</li>\n    {# Ajoute d'autres propriétés si besoin #}\n</ul>\n\n<a href=\"{{ pa\n"
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la formation{% endblock %}
+
+{% block body %}
+<h1>Formation #{{ formation.id }}</h1>
+
+<ul>
+    <li><strong>Nom :</strong> {{ formation.nom }}</li>
+    <li><strong>Description :</strong> {{ formation.description }}</li>
+    <li><strong>Thèmes :</strong>
+        {% for theme in formation.themes %}
+            {{ theme.nom }}{% if not loop.last %}, {% endif %}
+        {% else %}
+            Aucun
+        {% endfor %}
+    </li>
+    <li><strong>Prix :</strong> {{ formation.prix|default('Non défini') }} €</li>
+    <li><strong>Durée :</strong> {{ formation.duree|default('Non défini') }} heures</li>
+    <li><strong>Prérequis :</strong> {{ formation.prerequis|default('Aucun') }}</li>
+    <li><strong>Diplôme obtenu :</strong> {{ formation.diplome|default('Non précisé') }}</li>
+</ul>
+
+<a href="{{ path('formation_index') }}">← Retour à la liste</a> |
+<a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+
+<form method="post" action="{{ path('formation_delete', {'id': formation.id}) }}" onsubmit="return confirm('Confirmer la suppression ?');" style="display:inline-block;">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ formation.id) }}">
+    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "templates/session/index.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1752135467829,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752137719149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,35 +1,25 @@\n {% extends 'base.html.twig' %}\n \n-{% block title %}Sessions{% endblock %}\n+{% block title %}Liste des sessions{% endblock %}\n \n {% block body %}\n <h1>Sessions</h1>\n \n-<table>\n+<a href=\"{{ path('session_new') }}\">Ajouter une session</a>\n+\n+<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">\n     <thead>\n         <tr>\n-            <th>Formation</th>\n-            <th>Date début</th>\n-            <th>Date fin</th>\n+            <th>ID</th>\n+            <th>Nom</th>\n+            <th>Date</th>\n             <th>Lieu</th>\n-            <th>Formateur</th>\n             <th>Actions</th>\n         </tr>\n     </thead>\n     <tbody>\n     {% for session in sessions %}\n         <tr>\n-            <td>{{ session.formation.titre }}</td>\n-            <td>{{ session.dateDebut|date('d/m/Y') }}</td>\n-            <td>{{ session.dateFin|date('d/m/Y') }}</td>\n-            <td>{{ session.lieu }}</td>\n-            <td>{{ session.formateur.nom }} {{ session.formateur.prenom }}</td>\n-            <td><a href=\"{{ path('inscription_new', {'session_id': session.id}) }}\">S'inscrire</a></td>\n-        </tr>\n-    {% else %}\n-        <tr><td colspan=\"6\">Aucune session trouvée.</td></tr>\n-    {% endfor %}\n-    </tbody>\n-</table>\n-\n-{% endblock %}\n+            <td>{{ session.id }}</td>\n+            <td>{{ session.nom }}</td>\n+            <td>{{ session.date ? session.date|date(\n"
+                },
+                {
+                    "date": 1752137730212,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,5 +21,22 @@\n     {% for session in sessions %}\n         <tr>\n             <td>{{ session.id }}</td>\n             <td>{{ session.nom }}</td>\n-            <td>{{ session.date ? session.date|date(\n+            <td>{{ session.date ? session.date|date('d/m/Y') : '' }}</td>\n+            <td>{{ session.lieu }}</td>\n+            <td>\n+                <a href=\"{{ path('session_show', {'id': session.id}) }}\">Voir</a>\n+                <a href=\"{{ path('session_edit', {'id': session.id}) }}\">Modifier</a>\n+                <form method=\"post\" action=\"{{ path('session_delete', {'id': session.id}) }}\" style=\"display:inline-block\" onsubmit=\"return confirm('Confirmer la suppression ?');\">\n+                    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ session.id) }}\">\n+                    <button type=\"submit\" style=\"background:none;border:none;color:red;cursor:pointer;\">Supprimer</button>\n+                </form>\n+            </td>\n+        </tr>\n+    {% else %}\n+        <tr><td colspan=\"5\">Aucune session trouvée.</td></tr>\n+    {% endfor %}\n+    </tbody>\n+</table>\n+\n+{% endblock %}\n"
+                }
+            ],
+            "date": 1752135467829,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Sessions{% endblock %}\n\n{% block body %}\n<h1>Sessions</h1>\n\n<table>\n    <thead>\n        <tr>\n            <th>Formation</th>\n            <th>Date début</th>\n            <th>Date fin</th>\n            <th>Lieu</th>\n            <th>Formateur</th>\n            <th>Actions</th>\n        </tr>\n    </thead>\n    <tbody>\n    {% for session in sessions %}\n        <tr>\n            <td>{{ session.formation.titre }}</td>\n            <td>{{ session.dateDebut|date('d/m/Y') }}</td>\n            <td>{{ session.dateFin|date('d/m/Y') }}</td>\n            <td>{{ session.lieu }}</td>\n            <td>{{ session.formateur.nom }} {{ session.formateur.prenom }}</td>\n            <td><a href=\"{{ path('inscription_new', {'session_id': session.id}) }}\">S'inscrire</a></td>\n        </tr>\n    {% else %}\n        <tr><td colspan=\"6\">Aucune session trouvée.</td></tr>\n    {% endfor %}\n    </tbody>\n</table>\n\n{% endblock %}\n"
+        }
+    ]
+}

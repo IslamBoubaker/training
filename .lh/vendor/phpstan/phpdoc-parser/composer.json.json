@@ -1,0 +1,30 @@
+{
+    "sourceFile": "vendor/phpstan/phpdoc-parser/composer.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1752132884696,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752132906131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,13 +11,14 @@\n \t\t\"php-parallel-lint/php-parallel-lint\": \"^1.2\",\n \t\t\"phpstan/extension-installer\": \"^1.0\",\n \t\t\"phpstan/phpstan\": \"^1.5\",\n \t\t\"phpstan/phpstan-phpunit\": \"^1.1\",\n-\t\tcomposer require phpstan/phpdoc-parser \"^1.33\"\n-\n+\t\t\n \t\t\"phpstan/phpstan-strict-rules\": \"^1.0\",\n \t\t\"phpunit/phpunit\": \"^9.5\",\n \t\t\"symfony/process\": \"^5.2\"\n+\t\t \"phpstan/phpdoc-parser\": \"^1.33\" \n+\n \t},\n \t\"config\": {\n \t\t\"platform\": {\n \t\t\t\"php\": \"7.4.6\"\n"
+                },
+                {
+                    "date": 1752132914672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,8 @@\n \t\t\n \t\t\"phpstan/phpstan-strict-rules\": \"^1.0\",\n \t\t\"phpunit/phpunit\": \"^9.5\",\n \t\t\"symfony/process\": \"^5.2\"\n-\t\t \"phpstan/phpdoc-parser\": \"^1.33\" \n \n \t},\n \t\"config\": {\n \t\t\"platform\": {\n"
+                },
+                {
+                    "date": 1752132921139,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,10 @@\n \t\t\"php-parallel-lint/php-parallel-lint\": \"^1.2\",\n \t\t\"phpstan/extension-installer\": \"^1.0\",\n \t\t\"phpstan/phpstan\": \"^1.5\",\n \t\t\"phpstan/phpstan-phpunit\": \"^1.1\",\n-\t\t\n+\t\t\"phpstan/phpdoc-parser\": \"^1.33\" ,\n+\n \t\t\"phpstan/phpstan-strict-rules\": \"^1.0\",\n \t\t\"phpunit/phpunit\": \"^9.5\",\n \t\t\"symfony/process\": \"^5.2\"\n \n"
+                }
+            ],
+            "date": 1752132884696,
+            "name": "Commit-0",
+            "content": "{\n\t\"name\": \"phpstan/phpdoc-parser\",\n\t\"description\": \"PHPDoc parser with support for nullable, intersection and generic types\",\n\t\"license\": \"MIT\",\n\t\"require\": {\n\t\t\"php\": \"^7.2 || ^8.0\"\n\t},\n\t\"require-dev\": {\n\t\t\"doctrine/annotations\": \"^2.0\",\n\t\t\"nikic/php-parser\": \"^4.15\",\n\t\t\"php-parallel-lint/php-parallel-lint\": \"^1.2\",\n\t\t\"phpstan/extension-installer\": \"^1.0\",\n\t\t\"phpstan/phpstan\": \"^1.5\",\n\t\t\"phpstan/phpstan-phpunit\": \"^1.1\",\n\t\tcomposer require phpstan/phpdoc-parser \"^1.33\"\n\n\t\t\"phpstan/phpstan-strict-rules\": \"^1.0\",\n\t\t\"phpunit/phpunit\": \"^9.5\",\n\t\t\"symfony/process\": \"^5.2\"\n\t},\n\t\"config\": {\n\t\t\"platform\": {\n\t\t\t\"php\": \"7.4.6\"\n\t\t},\n\t\t\"sort-packages\": true,\n\t\t\"allow-plugins\": {\n\t\t\t\"phpstan/extension-installer\": true\n\t\t}\n\t},\n\t\"autoload\": {\n\t\t\"psr-4\": {\n\t\t\t\"PHPStan\\\\PhpDocParser\\\\\": [\n\t\t\t\t\"src/\"\n\t\t\t]\n\t\t}\n\t},\n\t\"autoload-dev\": {\n\t\t\"psr-4\": {\n\t\t\t\"PHPStan\\\\PhpDocParser\\\\\": [\n\t\t\t\t\"tests/PHPStan\"\n\t\t\t]\n\t\t}\n\t},\n\t\"minimum-stability\": \"dev\",\n\t\"prefer-stable\": true\n}\n"
+        }
+    ]
+}

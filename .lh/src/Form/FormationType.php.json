@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Form/FormationType.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137909065,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137909065,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\Formation;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass FormationType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options)\n    {\n        $builder\n            ->add('nom', TextType::class)\n            ->add('theme', TextType::class)\n            ->add('sousThemes', TextareaType::class, [\n                'required' => false,\n                'help' => 'Séparez les sous-thèmes par des virgules',\n            ])\n            ->add('ficheFormation', TextareaType::class, [\n                'required' => false,\n                'label' => 'Fiche formation (description détaillée)',\n            ])\n        ;\n    }\n\n    public function configureOptions(OptionsResolver $resolver)\n    {\n        $resolver->setDefaults([\n            'data_class' => Formation::class,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

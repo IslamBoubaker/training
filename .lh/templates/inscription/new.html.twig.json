@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/inscription/new.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752135479560,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752137597120,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,14 @@\n {% extends 'base.html.twig' %}\n \n-{% block title %}Inscription{% endblock %}\n+{% block title %}Créer une inscription{% endblock %}\n \n {% block body %}\n-<h1>Inscription à la session</h1>\n+<h1>Créer une nouvelle inscription</h1>\n \n {{ form_start(form) }}\n-\n-{{ form_row(form.stagiaire.nom) }}\n-{{ form_row(form.stagiaire.prenom) }}\n-{{ form_row(form.stagiaire.email) }}\n-\n-{{ form_row(form.entreprise) }}\n-\n-<button type=\"submit\">Valider l'inscription</button>\n-\n+    {{ form_widget(form) }}\n+    <button class=\"btn\">Créer</button>\n {{ form_end(form) }}\n \n+<a href=\"{{ path('inscription_index') }}\">← Retour à la liste</a>\n {% endblock %}\n"
+                }
+            ],
+            "date": 1752135479560,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Inscription{% endblock %}\n\n{% block body %}\n<h1>Inscription à la session</h1>\n\n{{ form_start(form) }}\n\n{{ form_row(form.stagiaire.nom) }}\n{{ form_row(form.stagiaire.prenom) }}\n{{ form_row(form.stagiaire.email) }}\n\n{{ form_row(form.entreprise) }}\n\n<button type=\"submit\">Valider l'inscription</button>\n\n{{ form_end(form) }}\n\n{% endblock %}\n"
+        }
+    ]
+}

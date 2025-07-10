@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ formation.titre }}{% endblock %}
+
+{% block body %}
+<h1>{{ formation.titre }}</h1>
+
+<p><strong>Description :</strong> {{ formation.description }}</p>
+<p><strong>Prix :</strong> {{ formation.prix }} €</p>
+<p><strong>Durée :</strong> {{ formation.duree }} heures</p>
+<p><strong>Pré-requis :</strong> {{ formation.prerequis }}</p>
+<p><strong>Diplôme obtenu :</strong> {{ formation.diplomeObtenu }}</p>
+
+<h2>Sessions à venir</h2>
+<ul>
+    {% for session in formation.sessions %}
+        {% if session.dateDebut > "now"|date %}
+        <li>
+            {{ session.dateDebut|date('d/m/Y') }} au {{ session.dateFin|date('d/m/Y') }} à {{ session.lieu }}
+            <a href="{{ path('inscription_new', {'session_id': session.id}) }}">S'inscrire</a>
+        </li>
+        {% endif %}
+    {% else %}
+        <li>Aucune session programmée.</li>
+    {% endfor %}
+</ul>
+
+<h2>Test de prérequis</h2>
+<a href="{{ path('test_prerequis', {'formation_id': formation.id}) }}">Passer le test de prérequis</a>
+
+{% endblock %}

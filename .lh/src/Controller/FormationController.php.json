@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/FormationController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137902573,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137902573,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse App\\Entity\\Formation;\nuse App\\Form\\FormationType;\nuse App\\Repository\\FormationRepository;\nuse Doctrine\\ORM\\EntityManagerInterface;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Request;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\n#[Route('/formation')]\nclass FormationController extends AbstractController\n{\n    #[Route('/', name: 'formation_index', methods: ['GET'])]\n    public function index(FormationRepository $repo): Response\n    {\n        $formations = $repo->findAll();\n        return $this->render('formation/index.html.twig', [\n            'formations' => $formations,\n        ]);\n    }\n\n    #[Route('/new', name: 'formation_new', methods: ['GET', 'POST'])]\n    public function new(Request $request, EntityManagerInterface $em): Response\n    {\n        $formation = new Formation();\n        $form = $this->createForm(FormationType::class, $formation);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->persist($formation);\n            $em->flush();\n\n            return $this->redirectToRoute('formation_index');\n        }\n\n        return $this->render('formation/new.html.twig', [\n            'form' => $form->createView(),\n        ]);\n    }\n\n    #[Route('/{id}', name: 'formation_show', methods: ['GET'])]\n    public function show(Formation $formation): Response\n    {\n        return $this->render('formation/show.html.twig', [\n            'formation' => $formation,\n        ]);\n    }\n\n    #[Route('/{id}/edit', name: 'formation_edit', methods: ['GET', 'POST'])]\n    public function edit(Request $request, Formation $formation, EntityManagerInterface $em): Response\n    {\n        $form = $this->createForm(FormationType::class, $formation);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->flush();\n\n            return $this->redirectToRoute('formation_index');\n        }\n\n        return $this->render('formation/edit.html.twig', [\n            'form' => $form->createView(),\n            'formation' => $formation,\n        ]);\n    }\n\n    #[Route('/{id}', name: 'formation_delete', methods: ['POST'])]\n    public function delete(Request $request, Formation $formation, EntityManagerInterface $em): Response\n    {\n        if ($this->isCsrfTokenValid('delete'.$formation->getId(), $request->request->get('_token'))) {\n            $em->remove($formation);\n            $em->flush();\n        }\n\n        return $this->redirectToRoute('formation_index');\n    }\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "templates/formateur/new.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1752137365540,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752137491208,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,14 @@\n-{# templates/formateur/new.html.twig et edit.html.twig sont similaires #}\n {% extends 'base.html.twig' %}\n-{% block title %}{{ form.vars.value.id ? 'Modifier' : 'Créer' }} un Formateur{% endblock %}\n+\n+{% block title %}Créer un formateur{% endblock %}\n+\n {% block body %}\n-<h1>{{ form.vars.value.id ? 'Modifier' : 'Créer' }} un Formateur</h1>\n+<h1>Créer un nouveau formateur</h1>\n+\n {{ form_start(form) }}\n-  {{ form_widget(form) }}\n-  <button class=\"btn\">{{ form.vars.value.id ? 'Mettre à jour' : 'Créer' }}</button>\n+    {{ form_widget(form) }}\n+    <button class=\"btn\">Créer</button>\n {{ form_end(form) }}\n-<a href=\"{{ path('formateur_index') }}\">Retour</a>\n+\n+<a href=\"{{ path('formateur_index') }}\">← Retour à la liste</a>\n {% endblock %}\n"
+                },
+                {
+                    "date": 1752138245842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n {% extends 'base.html.twig' %}\n \n-{% block title %}Créer un formateur{% endblock %}\n+{% block title %}Modifier un formateur{% endblock %}\n \n {% block body %}\n-<h1>Créer un nouveau formateur</h1>\n+<h1>Modifier le formateur</h1>\n \n {{ form_start(form) }}\n     {{ form_widget(form) }}\n-    <button class=\"btn\">Créer</button>\n+    <button class=\"btn\">Mettre à jour</button>\n {{ form_end(form) }}\n \n <a href=\"{{ path('formateur_index') }}\">← Retour à la liste</a>\n {% endblock %}\n"
+                }
+            ],
+            "date": 1752137365540,
+            "name": "Commit-0",
+            "content": "{# templates/formateur/new.html.twig et edit.html.twig sont similaires #}\n{% extends 'base.html.twig' %}\n{% block title %}{{ form.vars.value.id ? 'Modifier' : 'Créer' }} un Formateur{% endblock %}\n{% block body %}\n<h1>{{ form.vars.value.id ? 'Modifier' : 'Créer' }} un Formateur</h1>\n{{ form_start(form) }}\n  {{ form_widget(form) }}\n  <button class=\"btn\">{{ form.vars.value.id ? 'Mettre à jour' : 'Créer' }}</button>\n{{ form_end(form) }}\n<a href=\"{{ path('formateur_index') }}\">Retour</a>\n{% endblock %}\n"
+        }
+    ]
+}

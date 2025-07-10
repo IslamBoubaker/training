@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<h1>Inscription à la session</h1>
+
+{{ form_start(form) }}
+
+{{ form_row(form.stagiaire.nom) }}
+{{ form_row(form.stagiaire.prenom) }}
+{{ form_row(form.stagiaire.email) }}
+
+{{ form_row(form.entreprise) }}
+
+<button type="submit">Valider l'inscription</button>
+
+{{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/security/index.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752135354681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752137655005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,14 +8,15 @@\n {% if error %}\n     <div class=\"alert alert-danger\">{{ error.messageKey|trans(error.messageData, 'security') }}</div>\n {% endif %}\n \n-<form action=\"{{ path('login') }}\" method=\"post\">\n-    <label for=\"email\">Email :</label>\n-    <input type=\"email\" id=\"email\" name=\"email\" value=\"{{ last_username }}\" required autofocus>\n+<form method=\"post\" action=\"{{ path('app_login') }}\">\n+    <label for=\"inputEmail\">Email</label>\n+    <input type=\"email\" id=\"inputEmail\" name=\"_username\" required autofocus>\n \n-    <label for=\"password\">Mot de passe :</label>\n-    <input type=\"password\" id=\"password\" name=\"password\" required>\n+    <label for=\"inputPassword\">Mot de passe</label>\n+    <input type=\"password\" id=\"inputPassword\" name=\"_password\" required>\n \n     <button type=\"submit\">Se connecter</button>\n </form>\n+\n {% endblock %}\n"
+                }
+            ],
+            "date": 1752135354681,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Connexion{% endblock %}\n\n{% block body %}\n<h1>Connexion</h1>\n\n{% if error %}\n    <div class=\"alert alert-danger\">{{ error.messageKey|trans(error.messageData, 'security') }}</div>\n{% endif %}\n\n<form action=\"{{ path('login') }}\" method=\"post\">\n    <label for=\"email\">Email :</label>\n    <input type=\"email\" id=\"email\" name=\"email\" value=\"{{ last_username }}\" required autofocus>\n\n    <label for=\"password\">Mot de passe :</label>\n    <input type=\"password\" id=\"password\" name=\"password\" required>\n\n    <button type=\"submit\">Se connecter</button>\n</form>\n{% endblock %}\n"
+        }
+    ]
+}

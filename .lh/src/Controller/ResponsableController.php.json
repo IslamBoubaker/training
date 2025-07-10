@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/ResponsableController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137949857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137949857,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse App\\Entity\\Responsable;\nuse App\\Form\\ResponsableType;\nuse App\\Repository\\ResponsableRepository;\nuse Doctrine\\ORM\\EntityManagerInterface;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Request;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\n#[Route('/responsable')]\nclass ResponsableController extends AbstractController\n{\n    #[Route('/', name: 'responsable_index', methods: ['GET'])]\n    public function index(ResponsableRepository $repo): Response\n    {\n        $responsables = $repo->findAll();\n        return $this->render('responsable/index.html.twig', [\n            'responsables' => $responsables,\n        ]);\n    }\n\n    #[Route('/new', name: 'responsable_new', methods: ['GET', 'POST'])]\n    public function new(Request $request, EntityManagerInterface $em): Response\n    {\n        $responsable = new Responsable();\n        $form = $this->createForm(ResponsableType::class, $responsable);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->persist($responsable);\n            $em->flush();\n\n            return $this->redirectToRoute('responsable_index');\n        }\n\n        return $this->render('responsable/new.html.twig', [\n            'form' => $form->createView(),\n        ]);\n    }\n\n    #[Route('/{id}', name: 'responsable_show', methods: ['GET'])]\n    public function show(Responsable $responsable): Response\n    {\n        return $this->render('responsable/show.html.twig', [\n            'responsable' => $responsable,\n        ]);\n    }\n\n    #[Route('/{id}/edit', name: 'responsable_edit', methods: ['GET', 'POST'])]\n    public function edit(Request $request, Responsable $responsable, EntityManagerInterface $em): Response\n    {\n        $form = $this->createForm(ResponsableType::class, $responsable);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->flush();\n\n            return $this->redirectToRoute('responsable_index');\n        }\n\n        return $this->render('responsable/edit.html.twig', [\n            'form' => $form->createView(),\n            'responsable' => $responsable,\n        ]);\n    }\n\n    #[Route('/{id}', name: 'responsable_delete', methods: ['POST'])]\n    public function delete(Request $request, Responsable $responsable, EntityManagerInterface $em): Response\n    {\n        if ($this->isCsrfTokenValid('delete'.$responsable->getId(), $request->request->get('_token'))) {\n            $em->remove($responsable);\n            $em->flush();\n        }\n\n        return $this->redirectToRoute('responsable_index');\n    }\n}\n"
+        }
+    ]
+}

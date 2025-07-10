@@ -1,0 +1,11 @@
+{# templates/formateur/new.html.twig et edit.html.twig sont similaires #}
+{% extends 'base.html.twig' %}
+{% block title %}{{ form.vars.value.id ? 'Modifier' : 'Créer' }} un Formateur{% endblock %}
+{% block body %}
+<h1>{{ form.vars.value.id ? 'Modifier' : 'Créer' }} un Formateur</h1>
+{{ form_start(form) }}
+  {{ form_widget(form) }}
+  <button class="btn">{{ form.vars.value.id ? 'Mettre à jour' : 'Créer' }}</button>
+{{ form_end(form) }}
+<a href="{{ path('formateur_index') }}">Retour</a>
+{% endblock %}

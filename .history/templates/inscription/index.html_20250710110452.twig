@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des inscriptions{% endblock %}
+
+{% block body %}
+<h1>Inscriptions</h1>
+
+<a href="{{ path('inscription_new') }}">Ajouter une inscription</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Stagiaire</th>
+            <th>Session</th>
+            <th>Date d'inscription</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for inscription in inscriptions %}
+        <tr>
+            <td>{{ inscription.id }}</td>
+            <td>{{ inscription.stagiaire.nom }} {{ inscription.stagiaire.prenom }}</td>
+            <td>{{ inscription.session.nom }}</td>
+            <td>{{ inscription.dateInscription ? inscription.dateInscription|date('d/m/Y') : '' }}</td>
+            <td>
+                <a href="{{ path('inscription_show', {'id': inscription.id}) }}">Voir</a>
+                <a href="{{ path('inscription_edit', {'id': inscription.id}) }}">Modifier</a>
+                <form method="post" action="{{ path('inscription_delete', {'id': inscription.id}) }}" style="display:inline-block" onsubmit="return confirm('Confirmer la suppression ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ inscription.id) }}">
+                    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {% else %}
+        <tr><td colspan="5">Aucune inscription trouvée.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "templates/dashboard/index.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752135388546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752135388546,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Dashboard{% endblock %}\n\n{% block body %}\n<h1>Bienvenue sur le Dashboard</h1>\n{% endblock %}\n"
+        }
+    ]
+}

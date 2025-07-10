@@ -1,0 +1,46 @@
+{
+    "sourceFile": "test_mail.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1752151901773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752151921196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,10 @@\n use Symfony\\Component\\Mailer\\Transport;\r\n use Symfony\\Component\\Mailer\\Mailer;\r\n use Symfony\\Component\\Mime\\Email;\r\n \r\n-$dsn = 'smtp://USERNAME:PASSWORD@smtp.mailtrap.io:2525'; // Remplace USERNAME et PASSWORD\r\n+$dsn = 'MAILER_DSN=smtp://ton_username:ton_mot_de_passe@sandbox.smtp.mailtrap.io:2525\r\n+'; // Remplace USERNAME et PASSWORD\r\n \r\n $transport = Transport::fromDsn($dsn);\r\n $mailer = new Mailer($transport);\r\n \r\n"
+                },
+                {
+                    "date": 1752151927911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,9 @@\n use Symfony\\Component\\Mailer\\Transport;\r\n use Symfony\\Component\\Mailer\\Mailer;\r\n use Symfony\\Component\\Mime\\Email;\r\n \r\n-$dsn = 'MAILER_DSN=smtp://ton_username:ton_mot_de_passe@sandbox.smtp.mailtrap.io:2525\r\n-'; // Remplace USERNAME et PASSWORD\r\n+$dsn = 'smtp://ton_username:ton_mot_de_passe@sandbox.smtp.mailtrap.io:2525'; // Remplace USERNAME et PASSWORD\r\n \r\n $transport = Transport::fromDsn($dsn);\r\n $mailer = new Mailer($transport);\r\n \r\n"
+                },
+                {
+                    "date": 1752151986667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n $mailer = new Mailer($transport);\r\n \r\n $email = (new Email())\r\n     ->from('test@example.com')        // Adresse expéditeur\r\n-    ->to('test@example.com')          // Adresse destinataire\r\n+    ->to('boub@example.com')          // Adresse destinataire\r\n     ->subject('Test Mailtrap SMTP')\r\n     ->text('Test d’envoi de mail via Mailtrap.');\r\n \r\n try {\r\n"
+                },
+                {
+                    "date": 1752151992412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n $mailer = new Mailer($transport);\r\n \r\n $email = (new Email())\r\n     ->from('test@example.com')        // Adresse expéditeur\r\n-    ->to('boub@example.com')          // Adresse destinataire\r\n+    ->to('boubaker23100@example.com')          // Adresse destinataire\r\n     ->subject('Test Mailtrap SMTP')\r\n     ->text('Test d’envoi de mail via Mailtrap.');\r\n \r\n try {\r\n"
+                },
+                {
+                    "date": 1752152001153,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,10 @@\n $transport = Transport::fromDsn($dsn);\r\n $mailer = new Mailer($transport);\r\n \r\n $email = (new Email())\r\n-    ->from('test@example.com')        // Adresse expéditeur\r\n-    ->to('boubaker23100@example.com')          // Adresse destinataire\r\n+    ->from('@example.com')        // Adresse expéditeur\r\n+    ->to('boubaker23100@gmail.com')          // Adresse destinataire\r\n     ->subject('Test Mailtrap SMTP')\r\n     ->text('Test d’envoi de mail via Mailtrap.');\r\n \r\n try {\r\n"
+                },
+                {
+                    "date": 1752152007053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n $transport = Transport::fromDsn($dsn);\r\n $mailer = new Mailer($transport);\r\n \r\n $email = (new Email())\r\n-    ->from('@example.com')        // Adresse expéditeur\r\n+    ->from('it-@example.com')        // Adresse expéditeur\r\n     ->to('boubaker23100@gmail.com')          // Adresse destinataire\r\n     ->subject('Test Mailtrap SMTP')\r\n     ->text('Test d’envoi de mail via Mailtrap.');\r\n \r\n"
+                },
+                {
+                    "date": 1752152014935,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n $transport = Transport::fromDsn($dsn);\r\n $mailer = new Mailer($transport);\r\n \r\n $email = (new Email())\r\n-    ->from('it_training@.com')        // Adresse expéditeur\r\n+    ->from('it_training@b.com')        // Adresse expéditeur\r\n     ->to('boubaker23100@gmail.com')          // Adresse destinataire\r\n     ->subject('Test Mailtrap SMTP')\r\n     ->text('Test d’envoi de mail via Mailtrap.');\r\n \r\n"
+                }
+            ],
+            "date": 1752151901773,
+            "name": "Commit-0",
+            "content": "<?php\r\nrequire 'vendor/autoload.php';\r\n\r\nuse Symfony\\Component\\Mailer\\Transport;\r\nuse Symfony\\Component\\Mailer\\Mailer;\r\nuse Symfony\\Component\\Mime\\Email;\r\n\r\n$dsn = 'smtp://USERNAME:PASSWORD@smtp.mailtrap.io:2525'; // Remplace USERNAME et PASSWORD\r\n\r\n$transport = Transport::fromDsn($dsn);\r\n$mailer = new Mailer($transport);\r\n\r\n$email = (new Email())\r\n    ->from('test@example.com')        // Adresse expéditeur\r\n    ->to('test@example.com')          // Adresse destinataire\r\n    ->subject('Test Mailtrap SMTP')\r\n    ->text('Test d’envoi de mail via Mailtrap.');\r\n\r\ntry {\r\n    $mailer->send($email);\r\n    echo \"Mail envoyé avec succès\\n\";\r\n} catch (Exception $e) {\r\n    echo \"Erreur lors de l’envoi : \" . $e->getMessage() . \"\\n\";\r\n}\r\n"
+        }
+    ]
+}

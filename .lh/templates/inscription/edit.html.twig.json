@@ -1,0 +1,18 @@
+{
+    "sourceFile": "templates/inscription/edit.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137605449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137605449,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Modifier une inscription{% endblock %}\n\n{% block body %}\n<h1>Modifier l'inscription</h1>\n\n{{ form_start(form) }}\n    {{ form_widget(form) }}\n    <button class=\"btn\">Mettre à jour</button>\n{{ form_end(form) }}\n\n<a href=\"{{ path('inscription_index') }}\">← Retour à la liste</a>\n{% endblock %}\n"
+        }
+    ]
+}

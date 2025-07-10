@@ -1,0 +1,34 @@
+{
+    "sourceFile": "config/packages/security.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1752131952054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752131981745,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n security:\n     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords\n     password_hashers:\n-       password_hashers:\n         App\\Entity\\Responsable:\n             algorithm: auto\n         Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface: 'auto'\n     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider\n@@ -12,8 +11,10 @@\n             entity:\n                 class: App\\Entity\\Responsable\n                 property: email\n     firewalls:\n+                anonymous: true\n+\n         dev:\n             pattern: ^/(_(profiler|wdt)|css|images|js)/\n             security: false\n         main:\n"
+                },
+                {
+                    "date": 1752132005146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,11 @@\n             entity:\n                 class: App\\Entity\\Responsable\n                 property: email\n     firewalls:\n-                anonymous: true\n-\n+        anonymous: true\n+login_path: login\n+                check_path: login\n         dev:\n             pattern: ^/(_(profiler|wdt)|css|images|js)/\n             security: false\n         main:\n"
+                },
+                {
+                    "date": 1752132011623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,10 +12,10 @@\n                 class: App\\Entity\\Responsable\n                 property: email\n     firewalls:\n         anonymous: true\n-login_path: login\n-                check_path: login\n+            login_path: login\n+            check_path: login\n         dev:\n             pattern: ^/(_(profiler|wdt)|css|images|js)/\n             security: false\n         main:\n"
+                },
+                {
+                    "date": 1752132017164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,9 @@\n             entity:\n                 class: App\\Entity\\Responsable\n                 property: email\n     firewalls:\n-                anonymous: true\n-\n+    \n         dev:\n             pattern: ^/(_(profiler|wdt)|css|images|js)/\n             security: false\n         main:\n"
+                }
+            ],
+            "date": 1752131952054,
+            "name": "Commit-0",
+            "content": "security:\n    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords\n    password_hashers:\n       password_hashers:\n        App\\Entity\\Responsable:\n            algorithm: auto\n        Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface: 'auto'\n    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider\n    providers:\n        # used to reload user from session & other features (e.g. switch_user)\n        app_user_provider:\n            entity:\n                class: App\\Entity\\Responsable\n                property: email\n    firewalls:\n        dev:\n            pattern: ^/(_(profiler|wdt)|css|images|js)/\n            security: false\n        main:\n            lazy: true\n            provider: app_user_provider\n\n            # activate different ways to authenticate\n            # https://symfony.com/doc/current/security.html#the-firewall\n\n            # https://symfony.com/doc/current/security/impersonating_user.html\n            # switch_user: true\n\n    # Easy way to control access for large sections of your site\n    # Note: Only the *first* access control that matches will be used\n    access_control:\n        # - { path: ^/admin, roles: ROLE_ADMIN }\n        # - { path: ^/profile, roles: ROLE_USER }\n\nwhen@test:\n    security:\n        password_hashers:\n            # By default, password hashers are resource intensive and take time. This is\n            # important to generate secure password hashes. In tests however, secure hashes\n            # are not important, waste resources and increase test times. The following\n            # reduces the work factor to the lowest possible values.\n            Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface:\n                algorithm: auto\n                cost: 4 # Lowest possible value for bcrypt\n                time_cost: 3 # Lowest possible value for argon\n                memory_cost: 10 # Lowest possible value for argon\n"
+        }
+    ]
+}

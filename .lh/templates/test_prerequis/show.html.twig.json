@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/test_prerequis/show.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137824012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752138103242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,24 +1,21 @@\n {% extends 'base.html.twig' %}\n \n-{% block title %}Détails du test de prérequis{% endblock %}\n+{% block title %}Détails du test prérequis{% endblock %}\n \n {% block body %}\n-<h1>Test de prérequis #{{ test_prerequis.id }}</h1>\n+<h1>Test prérequis #{{ test.id }}</h1>\n \n <ul>\n-    <li><strong>Formation liée :</strong> {{ test_prerequis.formation.nom }}</li>\n-    <li><strong>Titre :</strong> {{ test_prerequis.titre }}</li>\n-    <li><strong>Description :</strong> {{ test_prerequis.description }}</li>\n-    <li><strong>Nombre de questions :</strong> {{ test_prerequis.nbQuestions }}</li>\n-    {# Ajoute d'autres propriétés si besoin #}\n+    <li><strong>Titre :</strong> {{ test.titre }}</li>\n+    <li><strong>Description :</strong> {{ test.description }}</li>\n </ul>\n \n <a href=\"{{ path('test_prerequis_index') }}\">← Retour à la liste</a> |\n-<a href=\"{{ path('test_prerequis_edit', {'id': test_prerequis.id}) }}\">Modifier</a>\n+<a href=\"{{ path('test_prerequis_edit', {'id': test.id}) }}\">Modifier</a>\n \n-<form method=\"post\" action=\"{{ path('test_prerequis_delete', {'id': test_prerequis.id}) }}\" onsubmit=\"return confirm('Confirmer la suppression ?');\" style=\"display:inline-block;\">\n-    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ test_prerequis.id) }}\">\n+<form method=\"post\" action=\"{{ path('test_prerequis_delete', {'id': test.id}) }}\" onsubmit=\"return confirm('Confirmer la suppression ?');\" style=\"display:inline-block;\">\n+    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ test.id) }}\">\n     <button type=\"submit\" style=\"background:none;border:none;color:red;cursor:pointer;\">Supprimer</button>\n </form>\n \n {% endblock %}\n"
+                }
+            ],
+            "date": 1752137824012,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Détails du test de prérequis{% endblock %}\n\n{% block body %}\n<h1>Test de prérequis #{{ test_prerequis.id }}</h1>\n\n<ul>\n    <li><strong>Formation liée :</strong> {{ test_prerequis.formation.nom }}</li>\n    <li><strong>Titre :</strong> {{ test_prerequis.titre }}</li>\n    <li><strong>Description :</strong> {{ test_prerequis.description }}</li>\n    <li><strong>Nombre de questions :</strong> {{ test_prerequis.nbQuestions }}</li>\n    {# Ajoute d'autres propriétés si besoin #}\n</ul>\n\n<a href=\"{{ path('test_prerequis_index') }}\">← Retour à la liste</a> |\n<a href=\"{{ path('test_prerequis_edit', {'id': test_prerequis.id}) }}\">Modifier</a>\n\n<form method=\"post\" action=\"{{ path('test_prerequis_delete', {'id': test_prerequis.id}) }}\" onsubmit=\"return confirm('Confirmer la suppression ?');\" style=\"display:inline-block;\">\n    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ test_prerequis.id) }}\">\n    <button type=\"submit\" style=\"background:none;border:none;color:red;cursor:pointer;\">Supprimer</button>\n</form>\n\n{% endblock %}\n"
+        }
+    ]
+}

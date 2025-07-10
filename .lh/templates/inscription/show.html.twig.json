@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/inscription/show.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137576393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752138302412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,10 @@\n <h1>Inscription #{{ inscription.id }}</h1>\n \n <ul>\n     <li><strong>Stagiaire :</strong> {{ inscription.stagiaire.nom }} {{ inscription.stagiaire.prenom }}</li>\n-    <li><strong>Session :</strong> {{ inscription.session.nom }}</li>\n+    <li><strong>Session :</strong> {{ inscription.session.lieu }} - {{ inscription.session.date|date('d/m/Y') }}</li>\n     <li><strong>Date d'inscription :</strong> {{ inscription.dateInscription ? inscription.dateInscription|date('d/m/Y') : 'Non renseignée' }}</li>\n-    {# Ajoute d'autres propriétés si besoin #}\n </ul>\n \n <a href=\"{{ path('inscription_index') }}\">← Retour à la liste</a> |\n <a href=\"{{ path('inscription_edit', {'id': inscription.id}) }}\">Modifier</a>\n"
+                }
+            ],
+            "date": 1752137576393,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Détails de l'inscription{% endblock %}\n\n{% block body %}\n<h1>Inscription #{{ inscription.id }}</h1>\n\n<ul>\n    <li><strong>Stagiaire :</strong> {{ inscription.stagiaire.nom }} {{ inscription.stagiaire.prenom }}</li>\n    <li><strong>Session :</strong> {{ inscription.session.nom }}</li>\n    <li><strong>Date d'inscription :</strong> {{ inscription.dateInscription ? inscription.dateInscription|date('d/m/Y') : 'Non renseignée' }}</li>\n    {# Ajoute d'autres propriétés si besoin #}\n</ul>\n\n<a href=\"{{ path('inscription_index') }}\">← Retour à la liste</a> |\n<a href=\"{{ path('inscription_edit', {'id': inscription.id}) }}\">Modifier</a>\n\n<form method=\"post\" action=\"{{ path('inscription_delete', {'id': inscription.id}) }}\" onsubmit=\"return confirm('Confirmer la suppression ?');\" style=\"display:inline-block;\">\n    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ inscription.id) }}\">\n    <button type=\"submit\" style=\"background:none;border:none;color:red;cursor:pointer;\">Supprimer</button>\n</form>\n\n{% endblock %}\n"
+        }
+    ]
+}

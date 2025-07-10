@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du test prérequis{% endblock %}
+
+{% block body %}
+<h1>Test prérequis #{{ test.id }}</h1>
+
+<ul>
+    <li><strong>Titre :</strong> {{ test.titre }}</li>
+    <li><strong>Description :</strong> {{ test.description }}</li>
+</ul>
+
+<a href="{{ path('test_prerequis_index') }}">← Retour à la liste</a> |
+<a href="{{ path('test_prerequis_edit', {'id': test.id}) }}">Modifier</a>
+
+<form method="post" action="{{ path('test_prerequis_delete', {'id': test.id}) }}" onsubmit="return confirm('Confirmer la suppression ?');" style="display:inline-block;">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ test.id) }}">
+    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+</form>
+
+{% endblock %}

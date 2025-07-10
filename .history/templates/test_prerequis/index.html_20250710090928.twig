@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TestPrerequis index{% endblock %}
+
+{% block body %}
+    <h1>TestPrerequis index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Questions</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for test_prerequi in test_prerequis %}
+            <tr>
+                <td>{{ test_prerequi.id }}</td>
+                <td>{{ test_prerequi.questions ? test_prerequi.questions|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('app_test_prerequis_show', {'id': test_prerequi.id}) }}">show</a>
+                    <a href="{{ path('app_test_prerequis_edit', {'id': test_prerequi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_test_prerequis_new') }}">Create new</a>
+{% endblock %}

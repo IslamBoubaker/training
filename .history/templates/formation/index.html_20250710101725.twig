@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue des Formations{% endblock %}
+
+{% block body %}
+<h1>Catalogue des Formations</h1>
+
+{% for theme in themes %}
+    <h2>{{ theme.nom }}</h2>
+
+    {% for sousTheme in theme.sousThemes %}
+        <h3>{{ sousTheme.nom }}</h3>
+        <ul>
+            {% for formation in sousTheme.formations %}
+                <li>
+                    <a href="{{ path('formation_show', {'id': formation.id}) }}">
+                        {{ formation.titre }}
+                    </a>
+                </li>
+            {% else %}
+                <li>Aucune formation dans ce sous-thème.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun sous-thème pour ce thème.</p>
+    {% endfor %}
+{% else %}
+    <p>Aucun thème trouvé.</p>
+{% endfor %}
+
+{% endblock %}

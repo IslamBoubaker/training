@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la session{% endblock %}
+
+{% block body %}
+<h1>Session #{{ session.id }}</h1>
+
+<ul>
+    <li><strong>Nom :</strong> {{ session.nom }}</li>
+    <li><strong>Date :</strong> {{ session.date ? session.date|date('d/m/Y') : 'Non renseignée' }}</li>
+    <li><strong>Lieu :</strong> {{ session.lieu }}</li>
+    <li><strong>Minimum participants

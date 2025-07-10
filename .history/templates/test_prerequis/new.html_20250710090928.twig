@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TestPrerequis{% endblock %}
+
+{% block body %}
+    <h1>Create new TestPrerequis</h1>
+
+    {{ include('test_prerequis/_form.html.twig') }}
+
+    <a href="{{ path('app_test_prerequis_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du responsable{% endblock %}
+
+{% block body %}
+<h1>Responsable #{{ responsable.id }}</h1>
+
+<ul>
+    <li><strong>Nom :</strong> {{ responsable.nom }}</li>
+    <li><strong>Email :</strong> {{ responsable.email }}</li>
+    {# Ajoute d'autres propriétés si besoin #}
+</ul>
+
+<a href="{{ pa

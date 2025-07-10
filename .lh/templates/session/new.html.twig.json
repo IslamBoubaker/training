@@ -1,0 +1,18 @@
+{
+    "sourceFile": "templates/session/new.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137740131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137740131,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Créer une session{% endblock %}\n\n{% block body %}\n<h1>Créer une nouvelle session</h1>\n\n{{ form_start(form) }}\n    {{ form_widget(form) }}\n    <button class=\"btn\">Créer</button>\n{{ form_end(form) }}\n\n<a href=\"{{ path('session_index') }}\">← Retour à la liste</a>\n{% endblock %}\n"
+        }
+    ]
+}

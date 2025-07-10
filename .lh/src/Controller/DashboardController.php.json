@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/DashboardController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752135377114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752135377114,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\nclass DashboardController extends AbstractController\n{\n    #[Route('/dashboard', name: 'dashboard')]\n    public function index()\n    {\n        $this->denyAccessUnlessGranted('ROLE_RESPONSABLE_CATALOGUE');\n\n        return $this->render('dashboard/index.html.twig');\n    }\n}\n"
+        }
+    ]
+}

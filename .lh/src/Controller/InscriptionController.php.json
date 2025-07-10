@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/InscriptionController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137938682,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137938682,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse App\\Entity\\Inscription;\nuse App\\Form\\InscriptionType;\nuse App\\Repository\\InscriptionRepository;\nuse Doctrine\\ORM\\EntityManagerInterface;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Request;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\n#[Route('/inscription')]\nclass InscriptionController extends AbstractController\n{\n    #[Route('/', name: 'inscription_index', methods: ['GET'])]\n    public function index(InscriptionRepository $repo): Response\n    {\n        $inscriptions = $repo->findAll();\n        return $this->render('inscription/index.html.twig', [\n            'inscriptions' => $inscriptions,\n        ]);\n    }\n\n    #[Route('/new', name: 'inscription_new', methods: ['GET', 'POST'])]\n    public function new(Request $request, EntityManagerInterface $em): Response\n    {\n        $inscription = new Inscription();\n        $form = $this->createForm(InscriptionType::class, $inscription);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->persist($inscription);\n            $em->flush();\n\n            return $this->redirectToRoute('inscription_index');\n        }\n\n        return $this->render('inscription/new.html.twig', [\n            'form' => $form->createView(),\n        ]);\n    }\n\n    #[Route('/{id}', name: 'inscription_show', methods: ['GET'])]\n    public function show(Inscription $inscription): Response\n    {\n        return $this->render('inscription/show.html.twig', [\n            'inscription' => $inscription,\n        ]);\n    }\n\n    #[Route('/{id}/edit', name: 'inscription_edit', methods: ['GET', 'POST'])]\n    public function edit(Request $request, Inscription $inscription, EntityManagerInterface $em): Response\n    {\n        $form = $this->createForm(InscriptionType::class, $inscription);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->flush();\n\n            return $this->redirectToRoute('inscription_index');\n        }\n\n        return $this->render('inscription/edit.html.twig', [\n            'form' => $form->createView(),\n            'inscription' => $inscription,\n        ]);\n    }\n\n    #[Route('/{id}', name: 'inscription_delete', methods: ['POST'])]\n    public function delete(Request $request, Inscription $inscription, EntityManagerInterface $em): Response\n    {\n        if ($this->isCsrfTokenValid('delete'.$inscription->getId(), $request->request->get('_token'))) {\n            $em->remove($inscription);\n            $em->flush();\n        }\n\n        return $this->redirectToRoute('inscription_index');\n    }\n}\n"
+        }
+    ]
+}

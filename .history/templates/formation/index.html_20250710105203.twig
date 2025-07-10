@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des formations{% endblock %}
+
+{% block body %}
+<h1>Formations</h1>
+
+<a href="{{ path('formation_new') }}">Ajouter une formation</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Thème</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for formation in formations %}
+        <tr>
+            <td>{{ formation.id }}</td>
+            <td>{{ formation.nom }}</td>
+            <td>{{ formation.theme }}</td>
+            <td>
+                <a href="{{ path('formation_show', {'id': formation.id}) }}">Voir</a>
+                <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+                <form method="post" action="{{ path('formation_delete', {'id': formation.id}) }}" style="display:inline-block" onsubmit="return confirm('Confirmer la suppression ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ formation.id) }}">
+                    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {% else %}
+        <tr><td colspan="4">Aucune formation trouvée.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

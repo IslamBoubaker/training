@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TestPrerequis{% endblock %}
+
+{% block body %}
+    <h1>TestPrerequis</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ test_prerequi.id }}</td>
+            </tr>
+            <tr>
+                <th>Questions</th>
+                <td>{{ test_prerequi.questions ? test_prerequi.questions|json_encode : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_test_prerequis_index') }}">back to list</a>
+
+    <a href="{{ path('app_test_prerequis_edit', {'id': test_prerequi.id}) }}">edit</a>
+
+    {{ include('test_prerequis/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Form/RegistrationFormType.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752138419304,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752138419304,
+            "name": "Commit-0",
+            "content": "<?php\r\n// src/Form/RegistrationFormType.php\r\nnamespace App\\Form;\r\n\r\nuse App\\Entity\\User;\r\nuse Symfony\\Component\\Form\\AbstractType;\r\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType;\r\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\PasswordType;\r\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType;\r\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\r\nuse Symfony\\Component\\Form\\FormBuilderInterface;\r\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\r\nuse Symfony\\Component\\Validator\\Constraints\\Length;\r\nuse Symfony\\Component\\Validator\\Constraints\\NotBlank;\r\n\r\nclass RegistrationFormType extends AbstractType\r\n{\r\n    public function buildForm(FormBuilderInterface $builder, array $options)\r\n    {\r\n        $builder\r\n            ->add('username', TextType::class, [\r\n                'label' => 'Nom d\\'utilisateur',\r\n            ])\r\n            ->add('email', EmailType::class)\r\n            ->add('plainPassword', RepeatedType::class, [\r\n                'type' => PasswordType::class,\r\n                'first_options' => ['label' => 'Mot de passe'],\r\n                'second_options' => ['label' => 'Confirmer le mot de passe'],\r\n                'mapped' => false,\r\n                'constraints' => [\r\n                    new NotBlank(['message' => 'Veuillez saisir un mot de passe']),\r\n                    new Length([\r\n                        'min' => 6,\r\n                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',\r\n                        'max' => 4096,\r\n                    ]),\r\n                ],\r\n            ]);\r\n    }\r\n\r\n    public function configureOptions(OptionsResolver $resolver)\r\n    {\r\n        $resolver->setDefaults([\r\n            'data_class' => User::class,\r\n        ]);\r\n    }\r\n}\r\n"
+        }
+    ]
+}

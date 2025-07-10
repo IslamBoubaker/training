@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/Command/MailTestCommand.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137106123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752137112854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,5 +29,16 @@\n         $io = new SymfonyStyle($input, $output);\n \n         $email = (new Email())\n             ->from('test@it-training.fr')\n-            ->to('destinataire@example.com') // Change si tu veux tester un\n+            ->to('destinataire@example.com') // Change si tu veux tester une autre adresse\n+            ->subject('Test Symfony Mailer')\n+            ->text('Ceci est un test d\\'envoi d\\'email via Symfony + Mailtrap.')\n+            ->html('<p><strong>Email de test envoyé avec succès !</strong><br>Depuis <code>mail:test</code></p>');\n+\n+        $this->mailer->send($email);\n+\n+        $io->success('Email de test envoyé avec succès via Mailtrap !');\n+\n+        return Command::SUCCESS;\n+    }\n+}\n"
+                }
+            ],
+            "date": 1752137106123,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Command;\n\nuse Symfony\\Component\\Console\\Attribute\\AsCommand;\nuse Symfony\\Component\\Console\\Command\\Command;\nuse Symfony\\Component\\Console\\Input\\InputInterface;\nuse Symfony\\Component\\Console\\Output\\OutputInterface;\nuse Symfony\\Component\\Console\\Style\\SymfonyStyle;\nuse Symfony\\Component\\Mailer\\MailerInterface;\nuse Symfony\\Component\\Mime\\Email;\n\n#[AsCommand(\n    name: 'mail:test',\n    description: 'Envoie un email de test via Mailtrap',\n)]\nclass MailTestCommand extends Command\n{\n    private MailerInterface $mailer;\n\n    public function __construct(MailerInterface $mailer)\n    {\n        parent::__construct();\n        $this->mailer = $mailer;\n    }\n\n    protected function execute(InputInterface $input, OutputInterface $output): int\n    {\n        $io = new SymfonyStyle($input, $output);\n\n        $email = (new Email())\n            ->from('test@it-training.fr')\n            ->to('destinataire@example.com') // Change si tu veux tester un\n"
+        }
+    ]
+}

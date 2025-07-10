@@ -1,0 +1,18 @@
+{
+    "sourceFile": "templates/session/show.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137726793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137726793,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Détails de la session{% endblock %}\n\n{% block body %}\n<h1>Session #{{ session.id }}</h1>\n\n<ul>\n    <li><strong>Nom :</strong> {{ session.nom }}</li>\n    <li><strong>Date :</strong> {{ session.date ? session.date|date('d/m/Y') : 'Non renseignée' }}</li>\n    <li><strong>Lieu :</strong> {{ session.lieu }}</li>\n    <li><strong>Minimum participants\n"
+        }
+    ]
+}

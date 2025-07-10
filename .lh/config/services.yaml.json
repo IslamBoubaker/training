@@ -1,0 +1,34 @@
+{
+    "sourceFile": "config/services.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1752135995375,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752136010661,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,10 +18,7 @@\n         exclude:\n             - '../src/DependencyInjection/'\n             - '../src/Entity/'\n             - '../src/Kernel.php'\n-\n-  Mailtrap\\Bridge\\Transport\\MailtrapSdkTransportFactory:\n+    Mailtrap\\Bridge\\Transport\\MailtrapSdkTransportFactory:\n         tags:\n             - { name: 'mailer.transport_factory' }\n-    # add more service definitions when explicit configuration is needed\n-    # please note that last definitions always *replace* previous ones\n"
+                },
+                {
+                    "date": 1752136016475,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,9 @@\n         exclude:\n             - '../src/DependencyInjection/'\n             - '../src/Entity/'\n             - '../src/Kernel.php'\n+    # add more service definitions when explicit configuration is needed\n+    # please note that last definitions always *replace* previous ones\n     Mailtrap\\Bridge\\Transport\\MailtrapSdkTransportFactory:\n         tags:\n             - { name: 'mailer.transport_factory' }\n"
+                },
+                {
+                    "date": 1752136022646,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,10 +16,9 @@\n     App\\:\n         resource: '../src/'\n         exclude:\n             - '../src/DependencyInjection/'\n-            - '../src/Entity/'\n-            - '../src/Kernel.php'\n+            - '../src/Entity/'          - '../src/Kernel.php'\n     # add more service definitions when explicit configuration is needed\n     # please note that last definitions always *replace* previous ones\n     Mailtrap\\Bridge\\Transport\\MailtrapSdkTransportFactory:\n         tags:\n"
+                },
+                {
+                    "date": 1752136035788,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,10 +16,12 @@\n     App\\:\n         resource: '../src/'\n         exclude:\n             - '../src/DependencyInjection/'\n-            - '../src/Entity/'          - '../src/Kernel.php'\n+            - '../src/Entity/'\n+            - '../src/Kernel.php'\n     # add more service definitions when explicit configuration is needed\n     # please note that last definitions always *replace* previous ones\n+\n     Mailtrap\\Bridge\\Transport\\MailtrapSdkTransportFactory:\n         tags:\n             - { name: 'mailer.transport_factory' }\n"
+                }
+            ],
+            "date": 1752135995375,
+            "name": "Commit-0",
+            "content": "# This file is the entry point to configure your own services.\n# Files in the packages/ subdirectory configure your dependencies.\n\n# Put parameters here that don't need to change on each machine where the app is deployed\n# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\nparameters:\n\nservices:\n    # default configuration for services in *this* file\n    _defaults:\n        autowire: true      # Automatically injects dependencies in your services.\n        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.\n\n    # makes classes in src/ available to be used as services\n    # this creates a service per class whose id is the fully-qualified class name\n    App\\:\n        resource: '../src/'\n        exclude:\n            - '../src/DependencyInjection/'\n            - '../src/Entity/'\n            - '../src/Kernel.php'\n\n  Mailtrap\\Bridge\\Transport\\MailtrapSdkTransportFactory:\n        tags:\n            - { name: 'mailer.transport_factory' }\n    # add more service definitions when explicit configuration is needed\n    # please note that last definitions always *replace* previous ones\n"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{# templates/formateur/show.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}Détails du Formateur{% endblock %}
+{% block body %}
+<h1>Formateur {{ formateur.nom }}</h1>
+<p>Email : {{ formateur.email }}</p>
+<a href="{{ path('formateur_index') }}">Retour à la liste</a>
+<a href="{{ path('formateur_edit', {'id': formateur.id}) }}">Modifier</a>
+{% endblock %}

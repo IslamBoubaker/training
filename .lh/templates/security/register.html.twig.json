@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/security/register.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137702642,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752138371520,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n <h1>Inscription</h1>\r\n \r\n {{ form_start(registrationForm) }}\r\n     {{ form_widget(registrationForm) }}\r\n-    <button class=\"btn\">S’inscrire</button>\r\n+    <button type=\"submit\">S’inscrire</button>\r\n {{ form_end(registrationForm) }}\r\n \r\n-<a href=\"{{ path('app_login') }}\">← Retour à la connexion</a>\r\n+<a href=\"{{ path('app_login') }}\">Déjà un compte ? Connectez-vous</a>\r\n {% endblock %}\r\n"
+                }
+            ],
+            "date": 1752137702642,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\r\n\r\n{% block title %}Inscription{% endblock %}\r\n\r\n{% block body %}\r\n<h1>Inscription</h1>\r\n\r\n{{ form_start(registrationForm) }}\r\n    {{ form_widget(registrationForm) }}\r\n    <button class=\"btn\">S’inscrire</button>\r\n{{ form_end(registrationForm) }}\r\n\r\n<a href=\"{{ path('app_login') }}\">← Retour à la connexion</a>\r\n{% endblock %}\r\n"
+        }
+    ]
+}

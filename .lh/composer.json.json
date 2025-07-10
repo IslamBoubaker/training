@@ -1,0 +1,38 @@
+{
+    "sourceFile": "composer.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1752132948398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752132954355,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n             \"symfony/runtime\": true\n         },\n         \"sort-packages\": true\n     },\n-     \"phpstan/phpdoc-parser\": \"^1.33\" \n+    \"phpstan/phpdoc-parser\": , \n \n     \"autoload\": {\n         \"psr-4\": {\n             \"App\\\\\": \"src/\"\n"
+                },
+                {
+                    "date": 1752132993539,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n             \"symfony/runtime\": true\n         },\n         \"sort-packages\": true\n     },\n-    \"phpstan/phpdoc-parser\": , \n+    \"phpstan/phpdoc-parser\":  \n \n     \"autoload\": {\n         \"psr-4\": {\n             \"App\\\\\": \"src/\"\n"
+                },
+                {
+                    "date": 1752132999335,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n             \"symfony/runtime\": true\n         },\n         \"sort-packages\": true\n     },\n-    \"phpstan/phpdoc-parser\":  \n+    \n \n     \"autoload\": {\n         \"psr-4\": {\n             \"App\\\\\": \"src/\"\n"
+                },
+                {
+                    "date": 1752133062245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     \"require\": {\n         \"php\": \">=8.1\",\n         \"ext-ctype\": \"*\",\n         \"ext-iconv\": \"*\",\n-        \"phpstan/phpdoc-parser\": \"1.33\",\n+ \"phpstan/phpdoc-parser\": \"^1.33\" \n         \"symfony/console\": \"6.4.*\",\n         \"symfony/dotenv\": \"6.4.*\",\n         \"symfony/flex\": \"^2\",\n         \"symfony/framework-bundle\": \"6.4.*\",\n"
+                },
+                {
+                    "date": 1752133067930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     \"require\": {\n         \"php\": \">=8.1\",\n         \"ext-ctype\": \"*\",\n         \"ext-iconv\": \"*\",\n- \"phpstan/phpdoc-parser\": \"^1.33\" \n+        \"phpstan/phpdoc-parser\": \"1.33\",\n         \"symfony/console\": \"6.4.*\",\n         \"symfony/dotenv\": \"6.4.*\",\n         \"symfony/flex\": \"^2\",\n         \"symfony/framework-bundle\": \"6.4.*\",\n@@ -25,9 +25,9 @@\n             \"symfony/runtime\": true\n         },\n         \"sort-packages\": true\n     },\n-    \n+    \"phpstan/phpdoc-parser\":  \n \n     \"autoload\": {\n         \"psr-4\": {\n             \"App\\\\\": \"src/\"\n"
+                }
+            ],
+            "date": 1752132948398,
+            "name": "Commit-0",
+            "content": "{\n    \"type\": \"project\",\n    \"license\": \"proprietary\",\n    \"minimum-stability\": \"stable\",\n    \"prefer-stable\": true,\n    \"require\": {\n        \"php\": \">=8.1\",\n        \"ext-ctype\": \"*\",\n        \"ext-iconv\": \"*\",\n        \"phpstan/phpdoc-parser\": \"1.33\",\n        \"symfony/console\": \"6.4.*\",\n        \"symfony/dotenv\": \"6.4.*\",\n        \"symfony/flex\": \"^2\",\n        \"symfony/framework-bundle\": \"6.4.*\",\n        \"symfony/mailer\": \"6.4.*\",\n        \"symfony/messenger\": \"6.4.*\",\n        \"symfony/runtime\": \"6.4.*\",\n        \"symfony/webapp-pack\": \"*\",\n        \"symfony/yaml\": \"6.4.*\"\n    },\n    \"config\": {\n        \"allow-plugins\": {\n            \"php-http/discovery\": true,\n            \"symfony/flex\": true,\n            \"symfony/runtime\": true\n        },\n        \"sort-packages\": true\n    },\n     \"phpstan/phpdoc-parser\": \"^1.33\" \n\n    \"autoload\": {\n        \"psr-4\": {\n            \"App\\\\\": \"src/\"\n        }\n    },\n    \"autoload-dev\": {\n        \"psr-4\": {\n            \"App\\\\Tests\\\\\": \"tests/\"\n        }\n    },\n    \"replace\": {\n        \"symfony/polyfill-ctype\": \"*\",\n        \"symfony/polyfill-iconv\": \"*\",\n        \"symfony/polyfill-php72\": \"*\",\n        \"symfony/polyfill-php73\": \"*\",\n        \"symfony/polyfill-php74\": \"*\",\n        \"symfony/polyfill-php80\": \"*\",\n        \"symfony/polyfill-php81\": \"*\"\n    },\n    \"scripts\": {\n        \"auto-scripts\": {\n            \"cache:clear\": \"symfony-cmd\",\n            \"assets:install %PUBLIC_DIR%\": \"symfony-cmd\",\n            \"importmap:install\": \"symfony-cmd\"\n        },\n        \"post-install-cmd\": [\n            \"@auto-scripts\"\n        ],\n        \"post-update-cmd\": [\n            \"@auto-scripts\"\n        ]\n    },\n    \"conflict\": {\n        \"symfony/symfony\": \"*\"\n    },\n    \"extra\": {\n        \"symfony\": {\n            \"allow-contrib\": false,\n            \"require\": \"6.4.*\"\n        }\n    }\n}\n"
+        }
+    ]
+}

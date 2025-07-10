@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Responsable index{% endblock %}
+
+{% block body %}
+    <h1>Responsable index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>RoleResponsable</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for responsable in responsables %}
+            <tr>
+                <td>{{ responsable.id }}</td>
+                <td>{{ responsable.email }}</td>
+                <td>{{ responsable.roles ? responsable.roles|json_encode : '' }}</td>
+                <td>{{ responsable.password }}</td>
+                <td>{{ responsable.nom }}</td>
+                <td>{{ responsable.prenom }}</td>
+                <td>{{ responsable.roleResponsable }}</td>
+                <td>
+                    <a href="{{ path('app_responsable_show', {'id': responsable.id}) }}">show</a>
+                    <a href="{{ path('app_responsable_edit', {'id': responsable.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_responsable_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Form/InscriptionType.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752137944218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752137944218,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\Inscription;\nuse App\\Entity\\Session;\nuse App\\Entity\\Stagiaire;\nuse Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType;\nuse Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass InscriptionType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options)\n    {\n        $builder\n            ->add('dateInscription', DateType::class, [\n                'widget' => 'single_text',\n                'label' => 'Date d’inscription',\n            ])\n            ->add('session', EntityType::class, [\n                'class' => Session::class,\n                'choice_label' => 'nom',\n                'placeholder' => 'Choisir une session',\n            ])\n            ->add('stagiaire', EntityType::class, [\n                'class' => Stagiaire::class,\n                'choice_label' => function($stagiaire) {\n                    return $stagiaire->getNom() . ' ' . $stagiaire->getPrenom();\n                },\n                'placeholder' => 'Choisir un stagiaire',\n            ])\n            ->add('coordonneesEntreprise', TextType::class, [\n                'required' => false,\n                'label' => 'Coordonnées de l’entreprise',\n            ])\n            // Ajoute d'autres champs nécessaires ici\n        ;\n    }\n\n    public function configureOptions(OptionsResolver $resolver)\n    {\n        $resolver->setDefaults([\n            'data_class' => Inscription::class,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

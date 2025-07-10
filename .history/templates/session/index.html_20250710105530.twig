@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des sessions{% endblock %}
+
+{% block body %}
+<h1>Sessions</h1>
+
+<a href="{{ path('session_new') }}">Ajouter une session</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Date</th>
+            <th>Lieu</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for session in sessions %}
+        <tr>
+            <td>{{ session.id }}</td>
+            <td>{{ session.nom }}</td>
+            <td>{{ session.date ? session.date|date('d/m/Y') : '' }}</td>
+            <td>{{ session.lieu }}</td>
+            <td>
+                <a href="{{ path('session_show', {'id': session.id}) }}">Voir</a>
+                <a href="{{ path('session_edit', {'id': session.id}) }}">Modifier</a>
+                <form method="post" action="{{ path('session_delete', {'id': session.id}) }}" style="display:inline-block" onsubmit="return confirm('Confirmer la suppression ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ session.id) }}">
+                    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {% else %}
+        <tr><td colspan="5">Aucune session trouvée.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

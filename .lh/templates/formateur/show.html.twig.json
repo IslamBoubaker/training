@@ -1,0 +1,26 @@
+{
+    "sourceFile": "templates/formateur/show.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1752137340183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752137475816,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,22 @@\n-{# templates/formateur/show.html.twig #}\n {% extends 'base.html.twig' %}\n-{% block title %}Détails du Formateur{% endblock %}\n+\n+{% block title %}Détails du formateur{% endblock %}\n+\n {% block body %}\n-<h1>Formateur {{ formateur.nom }}</h1>\n-<p>Email : {{ formateur.email }}</p>\n\\ No newline at end of file\n-<a href=\"{{ path('formateur_index') }}\">Retour à la liste</a>\n+<h1>Formateur #{{ formateur.id }}</h1>\n+\n+<ul>\n+    <li><strong>Nom :</strong> {{ formateur.nom }}</li>\n+    <li><strong>Email :</strong> {{ formateur.email }}</li>\n+    {# Ajoute d'autres propriétés si besoin #}\n+</ul>\n+\n+<a href=\"{{ path('formateur_index') }}\">← Retour à la liste</a> |\n <a href=\"{{ path('formateur_edit', {'id': formateur.id}) }}\">Modifier</a>\n-{% endblock %}\n+\n+<form method=\"post\" action=\"{{ path('formateur_delete', {'id': formateur.id}) }}\" onsubmit=\"return confirm('Confirmer la suppression ?');\" style=\"display:inline-block;\">\n+    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ formateur.id) }}\">\n+    <button type=\"submit\" style=\"background:none;border:none;color:red;cursor:pointer;\">Supprimer</button>\n+</form>\n+\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1752138235480,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n <h1>Formateur #{{ formateur.id }}</h1>\n \n <ul>\n     <li><strong>Nom :</strong> {{ formateur.nom }}</li>\n+    <li><strong>Prénom :</strong> {{ formateur.prenom }}</li>\n     <li><strong>Email :</strong> {{ formateur.email }}</li>\n-    {# Ajoute d'autres propriétés si besoin #}\n </ul>\n \n <a href=\"{{ path('formateur_index') }}\">← Retour à la liste</a> |\n <a href=\"{{ path('formateur_edit', {'id': formateur.id}) }}\">Modifier</a>\n"
+                }
+            ],
+            "date": 1752137340183,
+            "name": "Commit-0",
+            "content": "{# templates/formateur/show.html.twig #}\n{% extends 'base.html.twig' %}\n{% block title %}Détails du Formateur{% endblock %}\n{% block body %}\n<h1>Formateur {{ formateur.nom }}</h1>\n<p>Email : {{ formateur.email }}</p>\n<a href=\"{{ path('formateur_index') }}\">Retour à la liste</a>\n<a href=\"{{ path('formateur_edit', {'id': formateur.id}) }}\">Modifier</a>\n{% endblock %}"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du stagiaire{% endblock %}
+
+{% block body %}
+<h1>Stagiaire #{{ stagiaire.id }}</h1>
+
+<ul>
+    <li><strong>Nom :</strong> {{ stagiaire.nom }}</li>
+    <li><strong>Prénom :</strong> {{ stagiaire.prenom }}</li>
+    <li><strong>Email :</strong> {{ stagiaire.email }}</li>
+    {# Ajoute d'autres propriétés si besoin #}
+</ul>
+
+<a href="{{ path('stagiaire_index') }}">← Retour à la liste</a> |
+<a href="{{ path('stagiaire_edit', {'id': stagiaire.id}) }}">Modifier</a>
+
+<form method="post" action="{{ path('stagiaire_delete', {'id': stagiaire.id}) }}" onsubmit="return confirm('Confirmer la suppression ?');" style="display:inline-block;">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ stagiaire.id) }}">
+    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+</form>
+
+{% endblock %}

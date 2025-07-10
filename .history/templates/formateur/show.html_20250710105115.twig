@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du formateur{% endblock %}
+
+{% block body %}
+<h1>Formateur #{{ formateur.id }}</h1>
+
+<ul>
+    <li><strong>Nom :</strong> {{ formateur.nom }}</li>
+    <li><strong>Email :</strong> {{ formateur.email }}</li>
+    {# Ajoute d'autres propriétés si besoin #}
+</ul>
+
+<a href="{{ path('formateur_index') }}">← Retour à la liste</a> |
+<a href="{{ path('formateur_edit', {'id': formateur.id}) }}">Modifier</a>
+
+<form method="post" action="{{ path('formateur_delete', {'id': formateur.id}) }}" onsubmit="return confirm('Confirmer la suppression ?');" style="display:inline-block;">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ formateur.id) }}">
+    <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Supprimer</button>
+</form>
+
+{% endblock %}

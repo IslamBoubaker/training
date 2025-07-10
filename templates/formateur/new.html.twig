@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un formateur{% endblock %}
+
+{% block body %}
+<h1>Modifier le formateur</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">Mettre à jour</button>
+{{ form_end(form) }}
+
+<a href="{{ path('formateur_index') }}">← Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controller/StagiaireController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752138049379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752138049379,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse App\\Entity\\Stagiaire;\nuse App\\Form\\StagiaireType;\nuse App\\Repository\\StagiaireRepository;\nuse Doctrine\\ORM\\EntityManagerInterface;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Request;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\n#[Route('/stagiaire')]\nclass StagiaireController extends AbstractController\n{\n    #[Route('/', name: 'stagiaire_index', methods: ['GET'])]\n    public function index(StagiaireRepository $repo): Response\n    {\n        $stagiaires = $repo->findAll();\n        return $this->render('stagiaire/index.html.twig', [\n            'stagiaires' => $stagiaires,\n        ]);\n    }\n\n    #[Route('/new', name: 'stagiaire_new', methods: ['GET', 'POST'])]\n    public function new(Request $request, EntityManagerInterface $em): Response\n    {\n        $stagiaire = new Stagiaire();\n        $form = $this->createForm(StagiaireType::class, $stagiaire);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->persist($stagiaire);\n            $em->flush();\n\n            return $this->redirectToRoute('stagiaire_index');\n        }\n\n        return $this->render('stagiaire/new.html.twig', [\n            'form' => $form->createView(),\n        ]);\n    }\n\n    #[Route('/{id}', name: 'stagiaire_show', methods: ['GET'])]\n    public function show(Stagiaire $stagiaire): Response\n    {\n        return $this->render('stagiaire/show.html.twig', [\n            'stagiaire' => $stagiaire,\n        ]);\n    }\n\n    #[Route('/{id}/edit', name: 'stagiaire_edit', methods: ['GET', 'POST'])]\n    public function edit(Request $request, Stagiaire $stagiaire, EntityManagerInterface $em): Response\n    {\n        $form = $this->createForm(StagiaireType::class, $stagiaire);\n        $form->handleRequest($request);\n\n        if ($form->isSubmitted() && $form->isValid()) {\n            $em->flush();\n\n            return $this->redirectToRoute('stagiaire_index');\n        }\n\n        return $this->render('stagiaire/edit.html.twig', [\n            'form' => $form->createView(),\n            'stagiaire' => $stagiaire,\n        ]);\n    }\n\n    #[Route('/{id}', name: 'stagiaire_delete', methods: ['POST'])]\n    public function delete(Request $request, Stagiaire $stagiaire, EntityManagerInterface $em): Response\n    {\n        if ($this->isCsrfTokenValid('delete'.$stagiaire->getId(), $request->request->get('_token'))) {\n            $em->remove($stagiaire);\n            $em->flush();\n        }\n\n        return $this->redirectToRoute('stagiaire_index');\n    }\n}\n"
+        }
+    ]
+}

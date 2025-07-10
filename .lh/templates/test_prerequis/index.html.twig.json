@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/test_prerequis/index.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752137810109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752138098850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,28 +1,28 @@\n {% extends 'base.html.twig' %}\n \n-{% block title %}Liste des tests de prérequis{% endblock %}\n+{% block title %}Liste des tests prérequis{% endblock %}\n \n {% block body %}\n-<h1>Tests de prérequis</h1>\n+<h1>Tests prérequis</h1>\n \n-<a href=\"{{ path('test_prerequis_new') }}\">Ajouter un test</a>\n+<a href=\"{{ path('test_prerequis_new') }}\">Créer un nouveau test</a>\n \n <table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">\n     <thead>\n         <tr>\n             <th>ID</th>\n-            <th>Formation liée</th>\n             <th>Titre</th>\n+            <th>Description</th>\n             <th>Actions</th>\n         </tr>\n     </thead>\n     <tbody>\n-    {% for test in tests_prerequis %}\n+    {% for test in tests %}\n         <tr>\n             <td>{{ test.id }}</td>\n-            <td>{{ test.formation.nom }}</td>\n             <td>{{ test.titre }}</td>\n+            <td>{{ test.description|length > 50 ? test.description|slice(0, 50) ~ '...' : test.description }}</td>\n             <td>\n                 <a href=\"{{ path('test_prerequis_show', {'id': test.id}) }}\">Voir</a>\n                 <a href=\"{{ path('test_prerequis_edit', {'id': test.id}) }}\">Modifier</a>\n                 <form method=\"post\" action=\"{{ path('test_prerequis_delete', {'id': test.id}) }}\" style=\"display:inline-block\" onsubmit=\"return confirm('Confirmer la suppression ?');\">\n@@ -31,9 +31,9 @@\n                 </form>\n             </td>\n         </tr>\n     {% else %}\n-        <tr><td colspan=\"4\">Aucun test de prérequis trouvé.</td></tr>\n+        <tr><td colspan=\"4\">Aucun test trouvé.</td></tr>\n     {% endfor %}\n     </tbody>\n </table>\n \n"
+                }
+            ],
+            "date": 1752137810109,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Liste des tests de prérequis{% endblock %}\n\n{% block body %}\n<h1>Tests de prérequis</h1>\n\n<a href=\"{{ path('test_prerequis_new') }}\">Ajouter un test</a>\n\n<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">\n    <thead>\n        <tr>\n            <th>ID</th>\n            <th>Formation liée</th>\n            <th>Titre</th>\n            <th>Actions</th>\n        </tr>\n    </thead>\n    <tbody>\n    {% for test in tests_prerequis %}\n        <tr>\n            <td>{{ test.id }}</td>\n            <td>{{ test.formation.nom }}</td>\n            <td>{{ test.titre }}</td>\n            <td>\n                <a href=\"{{ path('test_prerequis_show', {'id': test.id}) }}\">Voir</a>\n                <a href=\"{{ path('test_prerequis_edit', {'id': test.id}) }}\">Modifier</a>\n                <form method=\"post\" action=\"{{ path('test_prerequis_delete', {'id': test.id}) }}\" style=\"display:inline-block\" onsubmit=\"return confirm('Confirmer la suppression ?');\">\n                    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ test.id) }}\">\n                    <button type=\"submit\" style=\"background:none;border:none;color:red;cursor:pointer;\">Supprimer</button>\n                </form>\n            </td>\n        </tr>\n    {% else %}\n        <tr><td colspan=\"4\">Aucun test de prérequis trouvé.</td></tr>\n    {% endfor %}\n    </tbody>\n</table>\n\n{% endblock %}\n"
+        }
+    ]
+}
